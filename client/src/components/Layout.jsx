@@ -3,16 +3,13 @@ import Navbar from './Navbar'
 
 const Layout = ({ children }) => {
     return (
-        <div className="flex flex-col w-full h-screen">
-            <div className="basis-1/12">
+        <div className="flex flex-col w-full h-screen overflow-hidden">
+            <div className="h-1/12 py-2">
                 <Navbar />
             </div>
-            <div className="basis-11/12">
-                <div className='bg-slate-100 h-full px-12 text-white '>
+            <div className="h-11/12 h-full">
+                <div className='bg-slate-300 h-full px-12 text-white overflow-auto '>
                     {children}
-                </div>
-                <div className="absolute bottom-0 h-6 text-white bg-slate-700/50 w-full text-center">
-                    &copy; codewithbharat | Source Code on <a className='text-blue-300' href="https://github.com/codewithbharat/linky">GitHub</a>
                 </div>
             </div>
         </div>
