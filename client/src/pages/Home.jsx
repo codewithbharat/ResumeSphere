@@ -27,13 +27,15 @@ const Home = () => {
     const RenderKeyFeatures = () => {
         return keyFeatures.map((feature) => {
             return (
-                <div className="bg-white flex flex-col items-center justify-center my-4 w-80 h-80 p-4 rounded-lg shadow-lg">
-                    <span className='text-5xl p-2'>
-                        {feature.icon}
-                    </span>
-                    <p className='text-2xl text-semibold text-center'>{feature.name}</p>
-                    <p className='p-4 text-md text-center font-light'>{feature.description}</p>
-                </div>
+                <Link to="/register">
+                    <div className="bg-white hover:border-2 hover:shadow-black/50 cursor-pointer flex flex-col items-center justify-center my-4 w-80 h-80 p-4 rounded-lg shadow-lg">
+                        <span className='text-5xl p-2'>
+                            {feature.icon}
+                        </span>
+                        <p className='text-2xl text-semibold text-center'>{feature.name}</p>
+                        <p className='p-4 text-md text-center font-light'>{feature.description}</p>
+                    </div>
+                </Link>
             )
         })
     }
@@ -77,12 +79,15 @@ const Home = () => {
     const RenderResumeBuilder = () => {
         return (
             resumeBuilderSteps.map((step) => (
-                <div className="flex flex-col m-4 w-40 h-40 justify-center items-center rounded-full shadow-md shadow-slate-800/20 bg-white">
-                    <span className='text-4xl'>
-                        {step.icon}
-                    </span>
-                    <p className=' font-light text-center p-2'>{step.name}</p>
-                </div>
+                <Link to="/register">
+                    <div className="flex hover:border-2 hover:shadow-black/50 flex-col m-4 w-40 h-40 justify-center items-center rounded-full shadow-md shadow-slate-800/20 bg-white">
+
+                        <span className='text-4xl'>
+                            {step.icon}
+                        </span>
+                        <p className=' font-light text-center p-2'>{step.name}</p>
+                    </div>
+                </Link>
             ))
         )
     }
@@ -90,16 +95,16 @@ const Home = () => {
 
     return (
         <Layout>
-            <div className="flex w-full py-10 h-fit lg:h-[700px]">
+            <div className="flex w-full py-10 h-fit xl:h-[700px]">
                 <HeroSection />
             </div>
-            <div className="keyFeatures px-12 py-20 w-full h-fit bg-blue-300">
+            <div className="keyFeatures px-12 py-20 w-full h-fit bg-blue-300 xl:h-[700px]">
                 <h2 className='text-center w-full text-4xl drop-shadow-lg text-white md:text-6xl md:p-8 font-semibold'>Key Features</h2>
                 <div className="flex flex-row justify-around flex-wrap">
                     <RenderKeyFeatures />
                 </div>
             </div>
-            <div className="how-it-works md:px-12 md:py-20  md:m-32 md:rounded-lg shadow-md h-fit bg-yellow-500/70 text-gray-600">
+            <div className="flex flex-col items-center justify-center how-it-works md:px-12 md:py-20  md:m-32 md:rounded-lg shadow-md h-fit bg-yellow-500/70 text-gray-600 xl:h-[500px]">
                 <h2 className='text-center w-full text-5xl md:text-6xl drop-shadow-md p-8 font-bold capitalize text-white'>how it works</h2>
                 <div className="flex flex-col lg:flex-row items-center md:justify-around md:px-12">
                     <RenderResumeBuilder />
