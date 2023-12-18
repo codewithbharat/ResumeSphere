@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&family=Lato:wght@400;700&family=Manrope:wght@200;300;400;500;600;700;800&family=Mulish:wght@200;300;400;500;600;700;800;900&family=Open+Sans:wght@600&family=Raleway&family=Roboto:wght@300;400;700&display=swap");
+.navBrand {
+  color: #233348;
+  font-family: Mulish;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.navLink {
+  font-family: Mulish;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

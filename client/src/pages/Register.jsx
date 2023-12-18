@@ -1,12 +1,12 @@
 import React from 'react'
 import Layout from '../components/Layout'
 
-const Home = () => {
+const Register = () => {
     return (
         <Layout>
-            Home
+            Register
         </Layout>
     )
 }
 
-export default Home
+export default Register
