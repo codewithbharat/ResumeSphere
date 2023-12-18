@@ -14,10 +14,10 @@ const Layout = ({ children }) => {
                 {children}
             </main>
 
-            <footer className="bg-gray-300 p-4">
+            <footer className="bg-gray-300/40 p-1">
                 {/* Footer content goes here */}
                 <div className="flex justify-center">
-                    <p className="text-sm text-gray-600">© 2023 codewithbharat All rights reserved. | Source Code : <a className='font-semibold' href="https://github.com/codewithbharat/ResumeSphere">Github</a> </p>
+                    <p className="text-md text-center text-gray-600">© 2023 codewithbharat All rights reserved. Source Code : <a className='font-semibold' href="https://github.com/codewithbharat/ResumeSphere">Github</a> </p>
                 </div>
             </footer>
         </div >
