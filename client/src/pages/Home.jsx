@@ -90,7 +90,7 @@ const Home = () => {
 
     return (
         <Layout>
-            <div className="flex w-full h-[700px]">
+            <div className="flex w-full py-10 h-fit lg:h-[700px]">
                 <HeroSection />
             </div>
             <div className="keyFeatures px-12 py-20 w-full h-fit bg-blue-300">
@@ -99,7 +99,7 @@ const Home = () => {
                     <RenderKeyFeatures />
                 </div>
             </div>
-            <div className="how-it-works md:px-12 md:py-20  md:m-32 md:rounded-lg shadow-md h-fit bg-blue-300 text-gray-600">
+            <div className="how-it-works md:px-12 md:py-20  md:m-32 md:rounded-lg shadow-md h-fit bg-yellow-500/70 text-gray-600">
                 <h2 className='text-center w-full text-5xl md:text-6xl drop-shadow-md p-8 font-bold capitalize text-white'>how it works</h2>
                 <div className="flex flex-col lg:flex-row items-center md:justify-around md:px-12">
                     <RenderResumeBuilder />
