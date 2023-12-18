@@ -14,9 +14,10 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="nav flex">
-                <Link to="/login" className='navLink mr-2 border-b-2 border-white hover:border-blue-500/50 hover:drop-shadow-sm hover:text-blue-500'>Login</Link>
-                <Link to="/register" className='navLink mr-2 border-b-2 border-white hover:border-blue-500/50 hover:drop-shadow-sm hover:text-blue-500'>Register</Link>
+                <Link to="/login" className='navLink border-2 p-2 shadow-sm bg-green-400 rounded-md font-bold md:border-none md:font-semibold md:p-0 md:text-gray-800 md:bg-white/0 md:shadow-none text-white mr-2 md:border-b-2 hover:text-blue-500'>Login</Link>
+                <Link to="/register" className='navLink hidden md:block mr-2 text-gray-800 font-semibold  hover:text-blue-500'>Register</Link>
             </div>
+
         </div>
     )
 }
