@@ -22,7 +22,7 @@ const Home = () => {
     const RenderKeyFeatures = () => {
         return keyFeatures.map((feature) => {
             return (
-                <div className="bg-white flex flex-col items-center justify-center w-80 h-80 p-4 rounded-lg shadow-lg">
+                <div className="bg-white flex flex-col items-center justify-center my-4 w-80 h-80 p-4 rounded-lg shadow-lg">
                     <p className='text-2xl text-semibold text-center'>{feature.name}</p>
                     <p className='p-4 text-md text-center'>{feature.description}</p>
                 </div>
