@@ -7,7 +7,20 @@ const CompleteRegistration = () => {
         jobTitle: '',
         phone: '',
         address: '',
+        linkedin: '',
+        twitter: '',
+        github: '',
+        website: '',
     });
+
+
+    const handleChange = (e, key) => {
+        setFormData({
+            ...formData,
+            [key]: e.target.value
+        });
+    }
+
 
     const nextStep = () => {
         setStep(step + 1);
@@ -19,13 +32,6 @@ const CompleteRegistration = () => {
 
 
     const personalInfoFields = [
-        {
-            name: 'Full Name',
-            type: 'text',
-            placeholder: 'John Doe',
-            key: 'fullName',
-        },
-
         {
             name: 'Job Title',
             type: 'text',
@@ -43,120 +49,10 @@ const CompleteRegistration = () => {
         {
             name: 'Address',
             type: 'text',
-            placeholder: '123 Main St',
+            placeholder: 'City, State',
             key: 'address',
         },
 
-    ]
-
-    const educationInfoFields = [
-        {
-            name: 'College Name',
-            type: 'text',
-            placeholder: 'Harvard University',
-            key: 'collegeName',
-        },
-
-        {
-            name: 'Degree',
-            type: 'text',
-            placeholder: 'Bachelor of Science',
-            key: 'degree',
-        },
-
-        {
-            name: 'Field of Study',
-            type: 'text',
-            placeholder: 'Computer Science',
-            key: 'fieldOfStudy',
-        },
-
-        {
-            name: 'From',
-            type: 'date',
-            placeholder: '01-01-2000',
-            key: 'from',
-        },
-
-        {
-            name: 'To',
-            type: 'date',
-            placeholder: '01-01-2004',
-            key: 'to',
-        },
-
-        {
-            name: 'Description',
-            type: 'text',
-            placeholder: 'Description',
-            key: 'description',
-        },
-    ]
-
-    const exprienceInfoFields = [
-        {
-            name: 'Company Name',
-            type: 'text',
-            placeholder: 'Google',
-            key: 'companyName',
-        },
-
-        {
-            name: 'Job Title',
-            type: 'text',
-            placeholder: 'Software Engineer',
-            key: 'jobTitle',
-        },
-
-        {
-            name: 'Location',
-            type: 'text',
-            placeholder: 'Mountain View, CA',
-            key: 'location',
-        },
-
-        {
-            name: 'From',
-            type: 'date',
-            placeholder: '01-01-2000',
-            key: 'from',
-        },
-
-        {
-            name: 'To',
-            type: 'date',
-            placeholder: '01-01-2004',
-            key: 'to',
-        },
-
-        {
-            name: 'Description',
-            type: 'text',
-            placeholder: 'Description',
-            key: 'description',
-        },
-    ]
-
-    const skillsInfoFields = [
-        {
-            name: 'Skill',
-            type: 'text',
-            placeholder: 'JavaScript',
-            key: 'skill',
-        },
-
-        {
-            name: 'Level',
-            type: 'text',
-            placeholder: 'Intermediate',
-            key: 'level',
-        },
-
-        {
-            name: 'Years',
-            type: 'number',
-            placeholder: '3',
-        }
     ]
 
     const socialInfoFields = [
@@ -178,8 +74,15 @@ const CompleteRegistration = () => {
         {
             name: 'Github',
             type: 'text',
-            placeholder: 'github.com/username',
+            placeholder: 'https://github.com/username',
             key: 'github',
+        },
+
+        {
+            name: 'Website',
+            type: 'text',
+            placeholder: 'https://website.com',
+            key: 'website',
         }
     ]
 
@@ -221,45 +124,17 @@ const CompleteRegistration = () => {
                         </div>
                     )}
 
+
+
                     {/* step-2 */}
+
                     {step === 2 && (
-                        <div className="step-2">
-                            <h2 className="text-4xl font-semibold">Education Info</h2>
-                            <div className="input-group flex flex-col my-8">
-                                <div className="step-content">
-                                    {educationInfoFields.map((info) => (
-                                        <div className="flex  flex-col my-4" key={info.name}>
-                                            <label
-                                                htmlFor={info.name}
-                                                className="text-xl font-semibold"
-                                            >
-                                                {info.name}
-                                            </label>
-                                            <input
-                                                type={info.type}
-                                                name={info.name}
-                                                id={info.name}
-                                                value={formData[info.key]}
-                                                onChange={(e) => handleChange(e, info.key)}
-                                                placeholder={info.placeholder}
-                                                className="p-2 my-1 border-2 border-gray-400 rounded-md"
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </div>
-                    )}
-
-                    {/* step 3 */}
-
-                    {step === 3 && (
-                        <div className="step-3">
-                            <h2 className="text-4xl font-semibold">Experience <span className='font-normal'>{'(Optional)'}</span></h2>
+                        <div className="step-5">
+                            <h2 className="text-4xl font-semibold">Social</h2>
                             <div className="input-group flex flex-col my-8">
                                 <div className="step-content">
                                     {
-                                        exprienceInfoFields.map((info) => (
+                                        socialInfoFields.map((info) => (
                                             <div className="flex flex-col my-4" key={info.name}>
                                                 <label
                                                     htmlFor={info.name}
@@ -283,43 +158,7 @@ const CompleteRegistration = () => {
                                 </div>
                             </div>
                         </div>
-                    )}
 
-
-
-                    {/* step-4  */}
-
-                    {step === 4 && (
-                        <div className="step-4">
-                            <h2 className="text-4xl font-semibold">Skills <span className='font-normal'>{'(Optional)'}</span></h2>
-                            <div className="input-group flex flex-col my-8">
-                                <div className="step-content">
-                                    {
-                                        skillsInfoFields.map((info) => (
-                                            <div className="flex flex-col my-4" key={info.name}>
-                                                <label
-                                                    htmlFor={info.name}
-                                                    className="text-xl font-semibold"
-                                                >
-                                                    {info.name}
-                                                </label>
-                                                <input
-
-                                                    type={info.type}
-                                                    name={info.name}
-                                                    id={info.name}
-                                                    value={formData[info.key]}
-                                                    onChange={(e) => handleChange(e, info.key)}
-                                                    placeholder={info.placeholder}
-                                                    className="p-2 my-1 border-2 border-gray-400 rounded-md"
-                                                />
-                                            </div>
-                                        ))
-                                    }
-
-                                </div>
-                            </div>
-                        </div>
                     )}
 
 
@@ -333,7 +172,7 @@ const CompleteRegistration = () => {
                                 {'<'}
                             </button>
                         )}
-                        {step !== 4 && (
+                        {step !== 2 && (
                             <button
                                 onClick={nextStep}
                                 className="bg-gray-500 font-semibold p-1 rounded-md shadow-lg cursor-pointer hover:shadow-black/20 hover:shadow-inner text-white w-10"
@@ -341,6 +180,18 @@ const CompleteRegistration = () => {
                                 {'>'}
                             </button>
                         )}
+
+                        {
+                            step === 2 && (
+                                <button
+                                    type='submit'
+                                    className="bg-blue-500 font-semibold p-1 rounded-md shadow-lg cursor-pointer hover:shadow-blue-700 hover:shadow-inner text-white w-20"
+                                    onClick={handelSubmit}
+                                >
+                                    Submit
+                                </button>
+                            )
+                        }
                     </div>
                 </form>
             </div>
