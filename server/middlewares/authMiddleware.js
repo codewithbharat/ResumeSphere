@@ -9,7 +9,6 @@ const secretKey = process.env.JWT_KEY;
 const authenticateUser = (req, res, next) => {
     // Get the token from the request headers
     const token = req.headers.authorization ? req.headers.authorization.split(' ')[1] : null;
-    const userType = req.headers.usertype;
 
     // Check if token is missing
     if (!token) {
@@ -25,8 +24,6 @@ const authenticateUser = (req, res, next) => {
 
         // Attach the decoded user information to the request object
         req.user = decoded.user;
-        req.user.userType = userType
-        // Continue to the next middleware or route handler
         next();
     });
 };

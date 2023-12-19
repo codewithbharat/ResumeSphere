@@ -1,9 +1,14 @@
+import axios from 'axios';
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const CompleteRegistration = () => {
     const [step, setStep] = useState(1);
+    const { name, email, password } = JSON.parse(localStorage.getItem('user'));
     const [formData, setFormData] = useState({
-        fullName: '',
+        name,
+        email,
+        password,
         jobTitle: '',
         phone: '',
         address: '',
@@ -86,9 +91,25 @@ const CompleteRegistration = () => {
         }
     ]
 
+    const navigate = useNavigate();
+
     const handelSubmit = (e) => {
         e.preventDefault();
-        console.log('form submitted');
+        axios.put(`${import.meta.env.VITE_SERVER}/update-user`, formData, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => {
+                const { user } = res.data;
+                localStorage.setItem('user', JSON.stringify(user));
+                console.log(user);
+                console.log('Registration Completed');
+                navigate('/profile');
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     return (
         <div className="flex justify-center items-center bg-slate-400/80 h-screen w-full">

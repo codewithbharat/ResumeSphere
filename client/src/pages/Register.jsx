@@ -31,7 +31,7 @@ const Register = () => {
                 // Save the token and user details in localStorage
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
-                navigate('/complete-profile');
+                navigate('/complete-reg');
 
             })
             .catch(err => {

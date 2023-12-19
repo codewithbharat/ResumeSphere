@@ -41,7 +41,7 @@ const Login = () => {
                 // Save the token and user details in localStorage
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
-                navigate('/');
+                navigate('/profile');
 
             })
             .catch(err => {

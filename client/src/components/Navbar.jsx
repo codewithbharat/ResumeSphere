@@ -12,8 +12,8 @@ const Navbar = () => {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
 
-        // window reload
-        window.location.reload();
+        // Redirect to home page
+        window.location.href = '/';
     }
 
     // Fetch the user from localStorage
