@@ -13,7 +13,7 @@ const register = errorHandler(async (req, res) => {
         expiresIn: '7d',
     });
 
-    res.status(201).json({ userId: newUser._id, token, newUser });
+    res.status(201).json({ userId: newUser._id, token, user: newUser });
 });
 
 // login user
