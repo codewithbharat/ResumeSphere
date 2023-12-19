@@ -5,8 +5,8 @@ const errorHandler = require('../middlewares/errorMiddleware');
 
 // register user
 const register = errorHandler(async (req, res) => {
-    const { email, password } = req.body;
-    const newUser = new User({ email, password });
+    const user = req.body;
+    const newUser = new User(user);
     await newUser.save();
 
     const token = jwt.sign({ userId: newUser._id }, process.env.JWT_KEY, {
