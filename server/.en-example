@@ -1,0 +1,3 @@
+MONGO_URI="mongodb://localhost:27017/resume-builder"
+JWT_KEY="YOUR_JWT_KEY_TOKEN"
+PORT=5000
