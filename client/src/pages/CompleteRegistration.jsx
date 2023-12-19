@@ -105,7 +105,7 @@ const CompleteRegistration = () => {
                 localStorage.setItem('user', JSON.stringify(user));
                 console.log(user);
                 console.log('Registration Completed');
-                navigate('/profile');
+                navigate('/dashboard/basic-info');
             })
             .catch(err => {
                 console.log(err);
