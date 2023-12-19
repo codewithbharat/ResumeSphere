@@ -34,8 +34,8 @@ const Navbar = () => {
                 <Link onClick={() => SetToggle(!toggle)} className='navLink text-blue-400 rounded-md font-bold  md:font-semibold md:text-gray-800 mr-4  hover:text-blue-500'>{user.name}</Link>
                 {
                     toggle && (
-                        <div className='absolute border-2 p-2 m-2 top-10 right-30'>
-                            <Link to="/" onClick={handleLogout} className='navLink hidden md:block mr-2 text-gray-800 font-semibold  hover:text-blue-500'>Logout</Link>
+                        <div className='absolute border-2 p-2 m-2 top-10 right-8 md:right-20 md:right-30'>
+                            <Link to="/" onClick={handleLogout} className='navLink  md:block mr-2 text-gray-800 font-semibold  hover:text-blue-500'>Logout</Link>
                         </div>
                     )
                 }

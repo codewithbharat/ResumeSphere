@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Register = () => {

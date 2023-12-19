@@ -34,7 +34,7 @@ const login = errorHandler(async (req, res) => {
         expiresIn: '7d',
     });
 
-    res.status(200).json({ userId: user._id, token, user });
+    res.status(200).json({ token, user });
 
 });
 
