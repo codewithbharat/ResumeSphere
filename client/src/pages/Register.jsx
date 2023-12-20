@@ -1,9 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 const Register = () => {
+
+    const token = localStorage.getItem('token');
+    const navigate = useNavigate();
+
+
+
+    useEffect(() => {
+        if (token) {
+            navigate('/dashboard/basic-info');
+        }
+    })
     const [regData, setRegData] = useState({
         name: '',
         email: '',
@@ -19,7 +30,6 @@ const Register = () => {
     }
 
     // handle form Submit
-    const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault()
         regData.email = regData.email.toLowerCase();
