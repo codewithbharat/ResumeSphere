@@ -1,5 +1,4 @@
 import React from 'react'
-import Layout from './Layout'
 import Sidebar from './Sidebar'
 
 
@@ -7,16 +6,15 @@ import Sidebar from './Sidebar'
 const DasboardLayout = ({ children }) => {
 
     return (
-        <Layout>
-            <div className="flex h-screen">
-                <div className="basis-2/12">
-                    <Sidebar />
-                </div>
-                <div className="basis-10/12">
-                    {children}
-                </div>
+        <div className="flex flex-col md:flex-row h-screen bg-slate-600">
+            <div className="basis-2/12">
+                <Sidebar />
             </div>
-        </Layout>
+            <div className="basis-10/12 p-2 md:px-5 md:py-20 lg:p-20">
+                {children}
+            </div>
+        </div>
+
     )
 }
 
