@@ -14,7 +14,7 @@ const Sidebar = () => {
 
     const SidebarLinks = [
         {
-            name: 'Personal Info',
+            name: 'Personal',
             link: "/dashboard/basic-info",
             icon: <TiDocumentText />
         },
@@ -51,7 +51,7 @@ const Sidebar = () => {
     }
     return (
         <div className="absolute w-full h-screen md:static flex flex-col">
-            <div className="flex p-4">
+            <div className="flex p-4 md:border-r-2 border-black/50">
                 <TiDocumentText size={32} onClick={() => SetToggle(!toggle)} />
                 <h1 className="text-2xl font-semibold">ResumeSphere</h1>
             </div>

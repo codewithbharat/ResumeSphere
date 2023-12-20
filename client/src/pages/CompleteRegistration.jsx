@@ -103,8 +103,6 @@ const CompleteRegistration = () => {
             .then(res => {
                 const { user } = res.data;
                 localStorage.setItem('user', JSON.stringify(user));
-                console.log(user);
-                console.log('Registration Completed');
                 navigate('/dashboard/basic-info');
             })
             .catch(err => {
