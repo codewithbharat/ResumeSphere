@@ -20,6 +20,12 @@ const Sidebar = () => {
         },
 
         {
+            name: "Socail Links",
+            link: "/dashboard/social-links",
+            icon: <TiDocumentText />
+        },
+
+        {
             name: 'Education',
             link: "/dashboard/education",
             icon: <TiDocumentText />
@@ -42,6 +48,12 @@ const Sidebar = () => {
             link: "/dashboard/projects",
             icon: <TiDocumentText />
         },
+
+        {
+            name: 'Templates',
+            link: '/dashboard/templates',
+            icon: <TiDocumentText />
+        }
     ]
 
     const handleClick = () => {
@@ -68,7 +80,7 @@ const Sidebar = () => {
                             ))
                         }
                         <button
-                            className='absolute hover:shadow-inner hover:shadow-black/40 hover:rounded-md  w-40 bottom-0 text-md bg-gray-400 shadow-lg rounded-sm text-white m-4 py-2 px-4 items-center'
+                            className=' hover:shadow-inner hover:shadow-black/40 hover:rounded-md  w-40 text-md bg-gray-400 shadow-lg rounded-sm text-white m-4 py-2 px-4 items-center'
                             onClick={() => {
                                 localStorage.removeItem('token');
                                 localStorage.removeItem('user');
