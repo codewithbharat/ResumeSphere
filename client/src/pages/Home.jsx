@@ -27,15 +27,15 @@ const Home = () => {
     const RenderKeyFeatures = () => {
         return keyFeatures.map((feature) => {
             return (
-                <Link to="/register">
-                    <div className="bg-white hover:border-2 hover:shadow-black/50 cursor-pointer flex flex-col items-center justify-center my-4 w-80 h-80 p-4 rounded-lg shadow-lg">
-                        <span className='text-5xl p-2'>
-                            {feature.icon}
-                        </span>
-                        <p className='text-2xl text-semibold text-center'>{feature.name}</p>
-                        <p className='p-4 text-md text-center font-light'>{feature.description}</p>
-                    </div>
-                </Link>
+
+                <div className="bg-white hover:border-2 hover:shadow-black/50 cursor-pointer flex flex-col items-center justify-center my-4 w-80 h-80 p-4 rounded-lg shadow-lg">
+                    <span className='text-5xl p-2'>
+                        {feature.icon}
+                    </span>
+                    <p className='text-2xl text-semibold text-center'>{feature.name}</p>
+                    <p className='p-4 text-md text-center font-light'>{feature.description}</p>
+                </div>
+
             )
         })
     }
@@ -79,15 +79,15 @@ const Home = () => {
     const RenderResumeBuilder = () => {
         return (
             resumeBuilderSteps.map((step) => (
-                <Link to="/register">
-                    <div className="flex hover:border-2 hover:shadow-black/50 flex-col m-4 w-40 h-40 justify-center items-center rounded-full shadow-md shadow-slate-800/20 bg-white">
 
-                        <span className='text-4xl'>
-                            {step.icon}
-                        </span>
-                        <p className=' font-light text-center p-2'>{step.name}</p>
-                    </div>
-                </Link>
+                <div className="flex hover:border-2 cursor-pointer hover:shadow-black/50 flex-col m-4 w-40 h-40 justify-center items-center rounded-full shadow-md shadow-slate-800/20 bg-white">
+
+                    <span className='text-4xl'>
+                        {step.icon}
+                    </span>
+                    <p className=' font-light text-center p-2'>{step.name}</p>
+                </div>
+
             ))
         )
     }
