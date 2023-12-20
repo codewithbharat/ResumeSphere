@@ -28,16 +28,17 @@ const BasicInfo = () => {
 
     const handleChange = (e) => {
         setBasicInfo({
-            ...BasicInfo,
+            ...basicInfo,
             [e.target.name]: e.target.value
         })
     }
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        console.log(basicInfo);
         axios.put(`${import.meta.env.VITE_SERVER}/update-user`, basicInfo, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+                Authorization: `Bearer ${token}`
             }
         }).then(res => {
             const { user } = res.data;
@@ -53,7 +54,7 @@ const BasicInfo = () => {
         <DasboardLayout>
             <div className="flex flex-col px-2 md:px-4 lg:px-12">
                 <h1 className='text-4xl'>Basic Info</h1>
-                <form onClick={handleSubmit}
+                <form onSubmit={handleSubmit}
                     className='bg-white p-2 md:p-4 rounded-md shadow-md my-4 '
                 >
                     <div className="flex flex-col md:flex-row">
@@ -109,7 +110,7 @@ const BasicInfo = () => {
                     <div className="flex px-4 justify-center md:justify-start">
                         <input
                             type='submit'
-                            className='bg-indigo-500 text-white rounded-md px-4 py-2 my-2 text-xl'
+                            className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
                             value={'Next'}
                         />
                     </div>
