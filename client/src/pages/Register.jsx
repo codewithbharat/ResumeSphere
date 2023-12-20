@@ -22,12 +22,10 @@ const Register = () => {
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault()
+        regData.email = regData.email.toLowerCase();
         axios.post(`${import.meta.env.VITE_SERVER}/register`, regData)
             .then(res => {
-
                 const { token, user } = res.data;
-                console.log(token);
-                console.log(user);
                 // Save the token and user details in localStorage
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
@@ -68,7 +66,7 @@ const Register = () => {
                                 inputFileds.map((input) => (
                                     <div className="flex flex-col my-2">
                                         <label htmlFor={input.name} className='text-xl mb-2 capitalize'>{input.name}</label>
-                                        <input required type={input.type} value={regData[input.name]} onChange={handleChange} name={input.name} id={input.name} className='py-2 px-4 rounded-md border-2 border-gray-400 focus:border-blue-400 focus:outline-none' />
+                                        <input required type={input.type} value={regData[input.name]} onChange={handleChange} name={input.name} id={input.name} className={` ${input.name == "name" ? "capitalize" : "normal-case"} py-2 px-4 rounded-md border-2 border-gray-400 focus:border-blue-400 focus:outline-none`} />
                                     </div>
                                 ))
                             }

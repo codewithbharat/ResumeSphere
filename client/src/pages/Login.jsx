@@ -31,13 +31,11 @@ const Login = () => {
     const navigate = useNavigate();
     const handleSubmit = (e) => {
         e.preventDefault()
+        loginData.email = loginData.email.toLowerCase();
         console.log(loginData);
         axios.post(`${import.meta.env.VITE_SERVER}/login`, loginData)
             .then(res => {
-                console.log(res.data);
                 const { token, user } = res.data;
-                console.log(token);
-                console.log(user);
                 // Save the token and user details in localStorage
                 localStorage.setItem('token', token);
                 localStorage.setItem('user', JSON.stringify(user));
