@@ -20,7 +20,7 @@ const Sidebar = () => {
         },
 
         {
-            name: "Socail Links",
+            name: "Social Links",
             link: "/dashboard/social-links",
             icon: <TiDocumentText />
         },

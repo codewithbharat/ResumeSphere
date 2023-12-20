@@ -40,6 +40,10 @@ const userSchema = new Schema({
         type: String,
         default: '',
     },
+    instagram: {
+        type: String,
+        default: '',
+    },
     website: {
         type: String,
         default: '',

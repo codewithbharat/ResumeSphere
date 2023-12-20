@@ -35,7 +35,6 @@ const BasicInfo = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(basicInfo);
         axios.put(`${import.meta.env.VITE_SERVER}/update-user`, basicInfo, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -44,7 +43,7 @@ const BasicInfo = () => {
             const { user } = res.data;
             console.log(user);
             localStorage.setItem('user', JSON.stringify(user));
-            navigate('/dashboard/education');
+            navigate('/dashboard/social-links');
         })
             .catch(err => {
                 console.log(err);
