@@ -6,7 +6,7 @@ import Sidebar from './Sidebar'
 const DasboardLayout = ({ children }) => {
 
     return (
-        <div className="flex flex-col md:flex-row h-screen bg-slate-100">
+        <div className="flex flex-col md:flex-row md:h-screen bg-slate-100">
             <div className="basis-2/12">
                 <Sidebar />
             </div>
