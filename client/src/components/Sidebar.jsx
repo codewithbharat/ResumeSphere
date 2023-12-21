@@ -73,7 +73,7 @@ const Sidebar = () => {
                         {
 
                             SidebarLinks.map(({ name, link, icon }) => (
-                                <div className="flex hover:shadow-inner hover:shadow-black/40 hover:rounded-md flex-row text-2xl bg-blue-800 shadow-lg rounded-sm text-white m-4 py-2 px-4 items-center">
+                                <div key={name} className="flex hover:shadow-inner hover:shadow-black/40 hover:rounded-md flex-row text-2xl bg-blue-800 shadow-lg rounded-sm text-white m-4 py-2 px-4 items-center">
                                     {icon}
                                     <Link className='ml-2' onClick={handleClick} to={link}>{name}</Link>
                                 </div>
