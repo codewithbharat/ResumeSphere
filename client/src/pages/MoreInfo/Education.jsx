@@ -18,7 +18,7 @@ const Education = () => {
     })
     const [educationData, setEducationData] = useState([]);
 
-    useEffect(() => {
+    const getUserData = () => {
         axios.get(`${import.meta.env.VITE_SERVER}/${user._id}`, {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -26,11 +26,19 @@ const Education = () => {
         })
             .then(res => {
                 const { user } = res.data;
+                console.log(user.education);
                 localStorage.setItem('user', JSON.stringify(user));
                 setEducationData(user.education);
-                console.log(`educationData:`, educationData);
             }
             )
+
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    useEffect(() => {
+        getUserData();
     }, [])
 
 
@@ -53,28 +61,44 @@ const Education = () => {
             const { message } = res.data;
             console.log(message);
 
-            axios.get(`${import.meta.env.VITE_SERVER}/${user._id}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            })
-                .then(res => {
-                    const { user } = res.data;
-                    console.log(user.education);
-                    localStorage.setItem('user', JSON.stringify(user));
-                    setEducationData(user.education);
-                }
-                )
+            // get user data again
+            getUserData();
         })
+            .catch(err => {
+                console.log(err);
+            })
+
+        setInstitute({
+            instName: '',
+            course: '',
+            degree: '',
+            grade: '',
+            startDate: '',
+            endDate: ''
+        })
+    }
+
+
+    const deleteEducation = (education_id) => {
+        axios.delete(`${import.meta.env.VITE_SERVER}/${user._id}/education/${education_id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        })
+            .then(res => {
+                const { message } = res.data;
+                console.log(message);
+
+                // get user data again
+                getUserData();
+
+            }
+            )
             .catch(err => {
                 console.log(err);
             })
     }
 
-
-    const handleDelete = (e) => {
-
-    }
 
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long' };
@@ -166,6 +190,7 @@ const Education = () => {
 
                             {/* // delete button */}
                             <button
+                                onClick={() => deleteEducation(educationItem._id)}
                                 className='bg-red-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
                             >
                                 Delete

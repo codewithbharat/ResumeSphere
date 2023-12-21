@@ -41,25 +41,36 @@ const addEducation = errorHandler(
 );
 
 // Delete education record for a user
-const deleteEducation = errorHandler(
-    async (req, res) => {
-        const { user_id, education_id } = req.params;
+const deleteEducation = errorHandler(async (req, res) => {
+    const { user_id, education_id } = req.params;
 
+    const user = await User.findById(user_id);
 
-        const user = await User.findById(user_id);
-
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
-
-        user.education.id(education_id).remove();
-
-        // Save the updated user document
-        await user.save();
-
-        res.json({ user });
-
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
     }
-)
+
+    // Find education and delete it
+    const education = await Education.findById(education_id);
+
+    if (!education) {
+        return res.status(404).json({ error: 'Education not found' });
+    }
+
+    // Remove the education ObjectId from the user's education array
+    user.education.pull(education_id);
+
+    // Save the updated user document before removing the education record
+    await user.save();
+
+    // Check if education is not null before attempting to remove
+    if (education) {
+        await education.deleteOne();
+        res.json({ message: 'Education deleted successfully' });
+    } else {
+        res.status(404).json({ error: 'Education not found' });
+    }
+});
+
 
 module.exports = { addEducation, deleteEducation };
