@@ -123,6 +123,7 @@ const Education = () => {
                                 <input type="text" name="instName" id="instName" value={institute.instName}
                                     className='border-2 border-indigo-300 rounded-md p-2 my-2 text-xl'
                                     onChange={handleChange}
+                                    placeholder='harvard university'
                                     required
                                 />
                             </div>
@@ -131,6 +132,7 @@ const Education = () => {
                                 <input type="text" name="degree" id="degree" value={institute.degree}
                                     className='border-2 border-indigo-300 rounded-md p-2 my-2 text-xl'
                                     onChange={handleChange}
+                                    placeholder='B.Tech'
                                     required
                                 />
 
@@ -143,6 +145,7 @@ const Education = () => {
                                 <input type="text" name="course" id="course" value={institute.course}
                                     className='border-2 border-indigo-300 rounded-md p-2 my-2 text-xl'
                                     onChange={handleChange}
+                                    placeholder='Computer Science'
                                     required
                                 />
                             </div>
@@ -151,6 +154,7 @@ const Education = () => {
                                 <input type="text" name="grade" id="grade" value={institute.grade}
                                     className='border-2 border-indigo-300 rounded-md p-2 my-2 text-xl'
                                     onChange={handleChange}
+                                    placeholder='9.5'
                                     required
                                 />
                             </div>
