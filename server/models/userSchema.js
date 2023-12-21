@@ -48,6 +48,7 @@ const userSchema = new Schema({
         type: String,
         default: '',
     },
+    education: [{ type: Schema.Types.ObjectId, ref: 'Education' }],
 });
 
 

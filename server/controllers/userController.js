@@ -2,6 +2,18 @@ const User = require('../models/userSchema');
 const errorHandler = require('../middlewares/errorMiddleware');
 // update user
 
+const getUserByID = errorHandler(async (req, res) => {
+    const { user_id } = req.params;
+
+    const user = await User.findById(user_id).populate('education');
+
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({ user });
+})
+
 const updateUser = errorHandler(async (req, res) => {
     const userData = req.body;
 
@@ -19,7 +31,7 @@ const updateUser = errorHandler(async (req, res) => {
     await updatedUser.save();
 
     res.status(201).json({ user: updatedUser });
-});
+})
 
 
-module.exports = { updateUser };
+module.exports = { updateUser, getUserByID };
