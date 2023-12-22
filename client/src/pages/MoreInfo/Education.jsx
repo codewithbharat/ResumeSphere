@@ -201,13 +201,6 @@ const Education = () => {
 
                         {educationData.toReversed().map((educationItem) => (
                             <div key={educationItem._id} className='bg-white p-2 md:p-4 rounded-md shadow-md my-4'>
-                                {/* <p>Institution: {educationItem.instName}</p>
-                                <p>Course: {educationItem.course}</p>
-                                <p>Degree: {educationItem.degree}</p>
-                                <p>Grade: {educationItem.grade}</p>
-                                <p>Start Date: {formatDate(educationItem.startDate)}</p>
-                                <p>End Date: {formatDate(educationItem.endDate)}</p> */}
-
                                 <div className="flex flex-col">
                                     <p className='text-2xl md:text-4xl font-bold'>{educationItem.degree} <span className='font-normal'>- {educationItem.course}</span></p>
                                     <p className='text-2xl pt-2 font-semibold'>{educationItem.instName} <span className='font-light ml-10 md:ml-20'>{`( ${educationItem.grade} CGPA )`}</span></p>
