@@ -4,8 +4,8 @@ const authMiddleware = require('../middlewares/authMiddleware');
 const { updateUser, getUserByID } = require('../controllers/userController');
 
 const { addEducation, deleteEducation } = require('../controllers/educationController');
-
 const { addExperience, deleteExperience } = require('../controllers/experienceController');
+const { addSkill, deleteSkill } = require('../controllers/skillController');
 
 // User routes
 router.put('/update-user', authMiddleware, updateUser);
@@ -19,5 +19,9 @@ router.delete('/:user_id/education/:education_id', authMiddleware, deleteEducati
 router.post('/:user_id/experience', authMiddleware, addExperience);
 router.delete('/:user_id/experience/:experience_id', authMiddleware, deleteExperience);
 
+
+// Skill routes
+router.post('/:user_id/skill', authMiddleware, addSkill);
+router.delete('/:user_id/skill/:skill_id', authMiddleware, deleteSkill);
 
 module.exports = router;
