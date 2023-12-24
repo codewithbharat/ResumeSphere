@@ -32,7 +32,6 @@ const Experience = () => {
                 const { user } = res.data;
                 localStorage.setItem('user', JSON.stringify(user));
                 setExperienceData(user.experience);
-                console.log(user.experience);
             }
             )
 
@@ -252,9 +251,6 @@ const Experience = () => {
                 </div>
 
             </div>
-
-
-
         </DasboardLayout>
     )
 }

@@ -5,7 +5,7 @@ const errorHandler = require('../middlewares/errorMiddleware');
 const getUserByID = errorHandler(async (req, res) => {
     const { user_id } = req.params;
 
-    const user = await User.findById(user_id).populate('education').populate('experience');
+    const user = await User.findById(user_id).populate('education').populate('experience').populate('skill');
 
     if (!user) {
         return res.status(404).json({ error: 'User not found' });
