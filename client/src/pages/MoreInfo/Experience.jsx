@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import DasboardLayout from '../../components/DashboardLayout'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 const Experience = () => {
+    const navigate = useNavigate();
 
     const user = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
@@ -109,7 +111,7 @@ const Experience = () => {
     return (
         <DasboardLayout>
             <div className="flex flex-col px-2 md:px-4 lg:px-12">
-                <h1 className='text-4xl'>Education</h1>
+                <h1 className='text-4xl'>Expreiences</h1>
                 <div className="flex flex-col-reverse md:flex-col">
                     <form
                         onSubmit={handleSubmit}
@@ -217,7 +219,7 @@ const Experience = () => {
                             />
 
                             <button
-
+                                onClick={() => navigate('/dashboard/skills')}
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
                             >

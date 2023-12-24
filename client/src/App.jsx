@@ -10,7 +10,8 @@ import {
   SocialLinks,
   Experience,
   Skill,
-  Project
+  Project,
+  Resume
 } from './pages'
 
 const App = () => {
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/dashboard/experience' element={<Experience />} />
         <Route path='/dashboard/skills' element={<Skill />} />
         <Route path='/dashboard/projects' element={<Project />} />
+        <Route path='/dashboard/resume' element={<Resume />} />
       </Routes>
     </div>
   )
