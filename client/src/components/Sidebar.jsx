@@ -47,12 +47,6 @@ const Sidebar = () => {
             name: 'Projects',
             link: "/dashboard/projects",
             icon: <TiDocumentText />
-        },
-
-        {
-            name: 'Templates',
-            link: '/dashboard/templates',
-            icon: <TiDocumentText />
         }
     ]
 
