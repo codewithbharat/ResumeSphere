@@ -51,6 +51,7 @@ const userSchema = new Schema({
     education: [{ type: Schema.Types.ObjectId, ref: 'Education' }],
     experience: [{ type: Schema.Types.ObjectId, ref: 'Experience' }],
     skill: [{ type: Schema.Types.ObjectId, ref: 'Skill' }],
+    project: [{ type: Schema.Types.ObjectId, ref: 'Project' }],
 });
 
 
