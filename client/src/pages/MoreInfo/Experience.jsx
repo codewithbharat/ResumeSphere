@@ -252,9 +252,6 @@ const Experience = () => {
                 </div>
 
             </div>
-
-
-
         </DasboardLayout>
     )
 }

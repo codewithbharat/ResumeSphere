@@ -1,6 +1,16 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import { Home, Register, Login, CompleteRegistration, BasicInfo, Education, SocialLinks, Experience } from './pages'
+import {
+  Home,
+  Register,
+  Login,
+  CompleteRegistration,
+  BasicInfo,
+  Education,
+  SocialLinks,
+  Experience,
+  Skill
+} from './pages'
 
 const App = () => {
   return (
@@ -14,6 +24,7 @@ const App = () => {
         <Route path='/dashboard/social-links' element={<SocialLinks />} />
         <Route path='/dashboard/education' element={<Education />} />
         <Route path='/dashboard/experience' element={<Experience />} />
+        <Route path='/dashboard/skills' element={<Skill />} />
       </Routes>
     </div>
   )
