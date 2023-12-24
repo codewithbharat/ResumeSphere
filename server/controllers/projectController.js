@@ -27,10 +27,10 @@ const addProject = errorHandler(async (req, res) => {
     await newProject.save();
 
     // Ensure 'user.projects' is initialized as an array
-    user.projects = user.projects || [];
+    user.project = user.project || [];
 
     // Add the ObjectId of the new project document to the user's projects array
-    user.projects.push(newProject._id);
+    user.project.push(newProject._id);
 
     // Save the updated user document
     await user.save();
@@ -56,7 +56,7 @@ const deleteProject = errorHandler(async (req, res) => {
     }
 
     // Remove the project ObjectId from the user's projects array
-    user.projects.pull(project_id);
+    user.project.pull(project_id);
 
     // Save the updated user document before removing the project record
     await user.save();
