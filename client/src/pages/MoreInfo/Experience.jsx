@@ -84,6 +84,30 @@ const Experience = () => {
 
     }
 
+
+    const handleNextButton = () => {
+        if (experience.companyName !== '') {
+            axios.post(`${import.meta.env.VITE_SERVER}/${user._id}/experience`, experience, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => {
+                const { message } = res.data;
+                console.log(message);
+
+                // get user data again
+                getUserData();
+
+                navigate('/dashboard/skills');
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+        navigate('/dashboard/skills');
+    }
+
     const formatDate = (date) => {
         const options = { year: 'numeric', month: 'long' };
         return new Date(date).toLocaleDateString('en-US', options);
@@ -219,7 +243,7 @@ const Experience = () => {
                             />
 
                             <button
-                                onClick={() => navigate('/dashboard/skills')}
+                                onClick={handleNextButton}
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
                             >
