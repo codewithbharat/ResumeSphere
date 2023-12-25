@@ -117,7 +117,7 @@ const Resume = () => {
                                                 <p className='font-semibold font-sans text-sm text-right'>{formatDate(exp.startDate)} - {(exp.currentlyWorking == true) ? "Presesnt" : exp.endDate} </p>
                                             </div>
                                             <div className='text-xl flex justify-between'><p>- {exp.location}</p>  <p className='capitalize text-sm'>{`( ${exp.locationType} )`}</p></div>
-                                            <div className='flex'><p className='mr-2'>More Info:</p> <p className='basis-8/12'>{exp.description}</p></div>
+                                            {exp.description && <div className='flex'><p className='mr-2'>More Info:</p> <p className='basis-8/12'>{exp.description}</p></div>}
                                         </div>
                                     </div>
                                 ))}
@@ -147,10 +147,10 @@ const Resume = () => {
                                                 <p className='text-xl font-bold capitalize'>{project.projectName} <span className='font-normal'>- {project.associated}</span></p>
                                                 <p className='font-semibold font-sans text-sm text-right'>{formatDate(project.startDate)} - {(project.currentlyworking == true) ? "present" : formatDate(project.endDate)}</p>
                                             </div>
-                                            <div className="flex">
+                                            {project.description && <div className="flex">
                                                 <p className='mr-2'>More Info :</p>
                                                 <p className='basis-8/12'>{project.description}</p>
-                                            </div>
+                                            </div>}
                                         </div>
                                     </div>
                                 ))}
