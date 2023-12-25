@@ -72,6 +72,29 @@ const Skill = () => {
 
     }
 
+    const handleNextButton = () => {
+        if (skill.skill !== '') {
+            axios.post(`${import.meta.env.VITE_SERVER}/${user._id}/skill`, skill, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => {
+                const { message } = res.data;
+                console.log(message);
+
+                // get user data again
+                getUserData();
+
+                navigate('/dashboard/projects');
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+        navigate('/dashboard/projects')
+    }
+
     const deleteSkill = (skill_id) => {
         axios.delete(`${import.meta.env.VITE_SERVER}/${user._id}/skill/${skill_id}`, {
             headers: {
@@ -139,7 +162,7 @@ const Skill = () => {
 
                             <button
                                 type='button'
-                                onClick={() => navigate('/dashboard/projects')}
+                                onClick={handleNextButton}
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
                             >
@@ -149,7 +172,7 @@ const Skill = () => {
                     </form>
 
                     <div className="flex flex-col md:flex-row md:flex-wrap">
-                        {skillsData && skillsData.map((skill, index) => (
+                        {skillsData && skillsData.toReversed().map((skill, index) => (
                             <div key={index} className='bg-white p-2 md:p-4 rounded-md shadow-md m-4'>
                                 <div className="flex flex-col">
                                     <p className='text-2xl font-bold'>{skill.skill} <span className='font-normal'>- {skill.proficiency}</span></p>

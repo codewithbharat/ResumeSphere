@@ -106,7 +106,31 @@ const Education = () => {
         return new Date(date).toLocaleDateString('en-US', options);
     };
 
+    const handleNextButton = () => {
 
+        if (institute.instName !== '') {
+
+            axios.post(`${import.meta.env.VITE_SERVER}/${user._id}/education`, institute, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }).then(res => {
+                const { message } = res.data;
+                console.log(message);
+
+                // get user data again
+                getUserData();
+
+                navigate('/dashboard/experience')
+
+            })
+                .catch(err => {
+                    console.log(err);
+                })
+        }
+
+        navigate('/dashboard/experience')
+    }
 
     return (
         <DasboardLayout>
@@ -188,7 +212,8 @@ const Education = () => {
                             />
 
                             <button
-                                onClick={() => navigate('/dashboard/experience')}
+                                type='button'
+                                onClick={handleNextButton}
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
                             >

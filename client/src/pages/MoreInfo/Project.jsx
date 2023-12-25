@@ -31,7 +31,7 @@ const Project = () => {
                 const { user } = res.data;
                 localStorage.setItem('user', JSON.stringify(user));
                 setProjectData(user.project);
-                console.log(user);
+                console.log(user.project);
             }
             )
 
@@ -73,6 +73,29 @@ const Project = () => {
             console.log(err);
         })
 
+    }
+
+    const handleNextButton = () => {
+        if (project.projectName !== '') {
+            axios.post(`${import.meta.env.VITE_SERVER}/${user._id}/project`, project, {
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                    'Content-Type': 'application/json'
+                }
+            }).then((res) => {
+                const { message } = res.data;
+                console.log(message);
+
+                // get user data again
+                getUserData();
+
+                navigate('/dashboard/resume')
+            }).catch((err) => {
+                console.log(err);
+            })
+        }
+
+        navigate('/dashboard/resume')
     }
 
     const handleChange = (e) => {
@@ -193,7 +216,7 @@ const Project = () => {
                             />
 
                             <button
-                                onClick={() => navigate('/dashboard/resume')}
+                                onClick={handleNextButton}
                                 type='button'
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
