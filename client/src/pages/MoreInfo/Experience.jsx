@@ -135,7 +135,7 @@ const Experience = () => {
     return (
         <DasboardLayout>
             <div className="flex flex-col px-2 md:px-4 lg:px-12">
-                <h1 className='text-4xl'>Expreiences</h1>
+                <h1 className='text-4xl'>Experiences</h1>
                 <div className="flex flex-col-reverse md:flex-col">
                     <form
                         onSubmit={handleSubmit}
