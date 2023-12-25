@@ -1,9 +1,21 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import DasboardLayout from '../components/DashboardLayout'
 import './styles/Resume.css'
+import ReactToPrint from 'react-to-print';
+
+
+// importing icons
+import { IoIosMail } from "react-icons/io";
+import { IoCall, IoLocationSharp } from "react-icons/io5";
+import { FaLinkedinIn, FaTwitter } from "react-icons/fa";
+import { TbBrandGithubFilled } from "react-icons/tb";
+import { AiFillInstagram } from "react-icons/ai";
+import { PiGlobeLight } from "react-icons/pi";
+
 
 const Resume = () => {
     const [userData, setUserData] = useState({});
+    const componentRef = useRef();
 
     useEffect(() => {
         // Retrieve user data from local storage
@@ -31,30 +43,40 @@ const Resume = () => {
         project,
     } = userData;
 
+
     return (
         <DasboardLayout>
 
             {/* If any user data is missing create a alert  */}
-
+            <div className="flex justify-center">
+                <ReactToPrint
+                    className="absolute"
+                    trigger={() => <button className="p-2 bg-blue-500 m-4 rounded-md text-white">Print Resume </button>}
+                    content={() => componentRef.current}
+                    // pirnt page one only 
+                    pageStyle="@page { size: A4; margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
+                    onBeforeGetContent={() => { document.title = `${userData.name.split(' ')[0]}'s Resume`; }}
+                />
+            </div>
             {/* todo */}
-            <div className="flex items-center justify-center">
-                <div className="resume bg-white shadow-lg p-10">
-                    <div className="header">
-                        <h1 className='text-2xl font-bold'>{name}</h1>
-                        <p>{jobTitle}</p>
-                        <p>{email}</p>
-                        <p>{phone}</p>
-                        <p>{address}</p>
-                    </div>
-                    <hr className="divider" />
+            <div className="md:flex md:flex-col md:justify-center md:items-center">
+                <div ref={componentRef} id='resume' className="resume scale-50 md:scale-100 bg-white shadow-lg p-10">
+                    <div className="flex">
+                        <div className="header basis-2/3">
+                            <h1 className='text-4xl font-bold'>{name}</h1>
+                            <p>{jobTitle}</p>
+                            <p className='flex items-center'> <IoIosMail className='mr-1' /> {email}</p>
+                            <p className='flex items-center'> <IoCall className='mr-1' />{phone}</p>
+                            <p className='flex items-center'> <IoLocationSharp className='mr-1'></IoLocationSharp> {address}</p>
+                        </div>
 
-                    <div className="socials">
-                        <h2 className='text-lg my-2 font-semibold'>Social Links</h2>
-                        <p>{linkedin}</p>
-                        <p>{github}</p>
-                        <p>{twitter}</p>
-                        <p>{instagram}</p>
-                        <p>{website}</p>
+                        <div className="socials basis-1/3 text-right mt-6">
+                            <p className='flex items-center '> <FaLinkedinIn className='mr-1' /> {linkedin}</p>
+                            <p className='flex items-center '> <TbBrandGithubFilled className='mr-1' /> {github}</p>
+                            <p className='flex items-center '> <FaTwitter className='mr-1' /> {twitter}</p>
+                            <p className='flex items-center '> <AiFillInstagram className='mr-1' /> {instagram}</p>
+                            <p className='flex items-center '><PiGlobeLight className='mr-1' />{website}</p>
+                        </div>
                     </div>
 
                     <hr className="divider" />
@@ -116,6 +138,7 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
+
         </DasboardLayout>
     );
 };
