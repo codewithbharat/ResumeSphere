@@ -8,6 +8,7 @@ import Education from "./MoreInfo/Education";
 import Experience from "./MoreInfo/Experience";
 import Skill from "./MoreInfo/Skill";
 import Project from "./MoreInfo/Project";
+import Resume from "./Resume";
 
 
 export {
@@ -20,5 +21,6 @@ export {
     SocialLinks,
     Experience,
     Skill,
-    Project
+    Project,
+    Resume
 };

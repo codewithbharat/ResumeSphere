@@ -98,8 +98,8 @@ const BasicInfo = () => {
                             />
                         </div>
                         <div className='flex flex-col basis-1/2 m-2'>
-                            <label htmlFor="webiste" className='text-2xl font-semibold' >Website</label>
-                            <input type="text" name="webiste" id="webiste" value={basicInfo.website}
+                            <label htmlFor="website" className='text-2xl font-semibold' >Website</label>
+                            <input type="text" name="website" id="website" value={basicInfo.website}
                                 onChange={handleChange}
                                 className='border-2 border-indigo-300 rounded-md p-2 my-2 text-xl '
                             />

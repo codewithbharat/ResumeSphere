@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import DasboardLayout from '../../components/DashboardLayout'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const Skill = () => {
 
     const user = JSON.parse(localStorage.getItem('user'))
     const token = localStorage.getItem('token')
+
+    const navigate = useNavigate();
 
     const [skillsData, setSkillsData] = useState([]);
 
@@ -135,7 +138,8 @@ const Skill = () => {
                             />
 
                             <button
-
+                                type='button'
+                                onClick={() => navigate('/dashboard/projects')}
                                 className='bg-indigo-500 cursor-pointer text-white rounded-md px-4 py-2 my-2 text-xl'
 
                             >

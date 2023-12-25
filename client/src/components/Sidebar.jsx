@@ -47,6 +47,12 @@ const Sidebar = () => {
             name: 'Projects',
             link: "/dashboard/projects",
             icon: <TiDocumentText />
+        },
+
+        {
+            name: 'Resume',
+            link: "/dashboard/resume",
+            icon: <TiDocumentText />
         }
     ]
 
