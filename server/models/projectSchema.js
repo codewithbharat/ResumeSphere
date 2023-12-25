@@ -7,7 +7,6 @@ const ProjectSchema = new mongoose.Schema({
     },
     associated: {
         type: String,
-        required: true
     },
     startDate: {
         type: Date,

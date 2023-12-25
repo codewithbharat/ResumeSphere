@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const authMiddleware = require('../middlewares/authMiddleware');
-const { updateUser, getUserByID } = require('../controllers/userController');
+const { updateUser, getUserByID, getUserByUserId } = require('../controllers/userController');
 
 const { addEducation, deleteEducation } = require('../controllers/educationController');
 const { addExperience, deleteExperience } = require('../controllers/experienceController');
@@ -11,6 +11,8 @@ const { addProject, deleteProject } = require('../controllers/projectController'
 // User routes
 router.put('/update-user', authMiddleware, updateUser);
 router.get('/:user_id', authMiddleware, getUserByID);
+router.get('/user/:userId', getUserByUserId);
+
 
 // Education routes
 router.post('/:user_id/education', authMiddleware, addEducation);

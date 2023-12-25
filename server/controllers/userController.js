@@ -12,7 +12,19 @@ const getUserByID = errorHandler(async (req, res) => {
     }
 
     res.status(200).json({ user });
-})
+});
+
+
+const getUserByUserId = errorHandler(async (req, res) => {
+    const { userId } = req.params;
+    const user = await User.findOne({ userId: userId }).populate('education').populate('experience').populate('skill').populate('project');
+
+    if (!user) {
+        return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.status(200).json({ user });
+});
 
 const updateUser = errorHandler(async (req, res) => {
     const userData = req.body;
@@ -34,4 +46,4 @@ const updateUser = errorHandler(async (req, res) => {
 })
 
 
-module.exports = { updateUser, getUserByID };
+module.exports = { updateUser, getUserByID, getUserByUserId };

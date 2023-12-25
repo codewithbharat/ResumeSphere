@@ -2,10 +2,25 @@ const User = require('../models/userSchema');
 const bcrypt = require("bcrypt")
 const jwt = require('jsonwebtoken');
 const errorHandler = require('../middlewares/errorMiddleware');
+const shortid = require('shortid');
 
 // register user
 const register = errorHandler(async (req, res) => {
     const user = req.body;
+
+    // check if user already exists
+
+    const oldUser = await User.findOne({ email: user.email });
+
+    if (oldUser) {
+        res.status(409).json({ message: 'User already exists' });
+    }
+
+    // shortId for user
+
+    user.userId = shortid.generate();
+
+    // save user to database
     const newUser = new User(user);
     await newUser.save();
 

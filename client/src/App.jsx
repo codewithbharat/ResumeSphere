@@ -11,7 +11,8 @@ import {
   Experience,
   Skill,
   Project,
-  Resume
+  Resume,
+  SharedResume
 } from './pages'
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/dashboard/skills' element={<Skill />} />
         <Route path='/dashboard/projects' element={<Project />} />
         <Route path='/dashboard/resume' element={<Resume />} />
+        <Route path='/resume/:userId' element={<SharedResume />} />
       </Routes>
     </div>
   )

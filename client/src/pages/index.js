@@ -9,6 +9,7 @@ import Experience from "./MoreInfo/Experience";
 import Skill from "./MoreInfo/Skill";
 import Project from "./MoreInfo/Project";
 import Resume from "./Resume";
+import SharedResume from "./SharedResume";
 
 
 export {
@@ -22,5 +23,6 @@ export {
     Experience,
     Skill,
     Project,
-    Resume
+    Resume,
+    SharedResume
 };

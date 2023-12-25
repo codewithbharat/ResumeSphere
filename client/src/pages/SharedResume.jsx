@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-import DasboardLayout from '../components/DashboardLayout'
 import './styles/Resume.css'
 import ReactToPrint from 'react-to-print';
+import axios from 'axios';
 
 
 // importing icons
@@ -12,19 +12,33 @@ import { TbBrandGithubFilled } from "react-icons/tb";
 import { AiFillInstagram } from "react-icons/ai";
 import { PiGlobeLight } from "react-icons/pi";
 
+import { useParams } from 'react-router-dom'
+import Navbar from '../components/Navbar';
 
-const Resume = () => {
+const SharedResume = () => {
+    const { userId } = useParams();
+    console.log(userId);
     const [userData, setUserData] = useState({});
     const componentRef = useRef();
 
-    useEffect(() => {
-        // Retrieve user data from local storage
-        const user = JSON.parse(localStorage.getItem('user'));
+    const getUserData = () => {
+        axios.get(`${import.meta.env.VITE_SERVER}/user/${userId}`)
+            .then(res => {
+                const { user } = res.data;
+                console.log(user);
+                setUserData(user);
+            }
+            )
 
-        if (user) {
-            setUserData(user);
-        }
-    }, []);
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+
+    useEffect(() => {
+        getUserData();
+    }, [])
 
     const {
         name,
@@ -47,28 +61,12 @@ const Resume = () => {
         const options = { year: 'numeric', month: 'long' };
         return new Date(date).toLocaleDateString('en-US', options);
     };
-
     return (
-        <DasboardLayout>
-
-            {/* If any user data is missing create a alert  */}
-            <div className="flex justify-center">
-                <ReactToPrint
-                    className="absolute"
-                    trigger={() => <button className="p-2 bg-blue-500 m-4 rounded-md text-white">Print Resume </button>}
-                    content={() => componentRef.current}
-                    // pirnt page one only 
-                    pageStyle="@page { size: A4; margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
-                    onBeforeGetContent={() => { document.title = `${userData.name.split(' ')[0]}'s Resume`; }}
-                />
-                {/* add a button to copy link of shareable resume of the user */}
-
-                <button
-                    onClick={() => { navigator.clipboard.writeText(`${import.meta.env.VITE_BASE_URL}/resume/${userData.userId}`) }}
-                    className="p-2 bg-blue-500 m-4 rounded-md text-white">Copy Link</button>
+        <div>
+            <div className='my-4'>
+                <Navbar />
             </div>
-            {/* todo */}
-            <div className="md:flex md:flex-col md:justify-center md:items-center">
+            <div className="md:flex mt-20 h-[600px] md:h-auto md:flex-col md:justify-center md:items-center">
                 <div ref={componentRef} id='resume' className="resume scale-50 md:scale-100 bg-white shadow-lg p-10">
                     <div className="flex">
                         <div className="header basis-2/3">
@@ -163,9 +161,18 @@ const Resume = () => {
                     </div>
                 </div>
             </div>
+            <div className="flex justify-center">
+                <ReactToPrint
+                    className="absolute"
+                    trigger={() => <button className="p-2 bg-blue-500 m-4 rounded-md text-white">Print Resume </button>}
+                    content={() => componentRef.current}
+                    // pirnt page one only 
+                    pageStyle="@page { size: A4; margin: 0mm; } @media print { body { -webkit-print-color-adjust: exact; } }"
+                    onBeforeGetContent={() => { document.title = `${userData.name.split(' ')[0]}'s Resume`; }}
+                />
+            </div>
+        </div>
+    )
+}
 
-        </DasboardLayout>
-    );
-};
-
-export default Resume
+export default SharedResume
