@@ -43,6 +43,10 @@ const Resume = () => {
         project,
     } = userData;
 
+    const formatDate = (date) => {
+        const options = { year: 'numeric', month: 'long' };
+        return new Date(date).toLocaleDateString('en-US', options);
+    };
 
     return (
         <DasboardLayout>
@@ -86,27 +90,35 @@ const Resume = () => {
                             <h2 className='text-lg my-2 font-semibold'>Education</h2>
                             {/* Map through education array and display details */}
                             {education &&
-                                education.map((edu, index) => (
-                                    <div key={index}>
-                                        <p>{edu.instName}</p>
-                                        <p>{edu.degree}</p>
-                                        <p>{edu.year}</p>
+                                education.map((educationItem) => (
+                                    <div key={educationItem._id} className='my-2'>
+                                        <div className="flex flex-col">
+                                            <div className="flex justify-between">
+                                                <p className='text-xl font-bold'>{educationItem.degree} - {educationItem.course}</p>
+                                                <p className='font-semibold font-sans text-sm text-right'>{formatDate(educationItem.startDate)} - {formatDate(educationItem.endDate)}</p>
+                                            </div>
+                                            <div className='text-lg flex'><span>- {educationItem.instName}</span> <span className='font-light text-sm ml-auto'>{`( ${educationItem.grade} cGPA )`}</span></div>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
 
                         <hr className="divider" />
 
-                        <div className="section">
-                            <h2>Experience</h2>
+                        <div className="experience">
+                            <h2 className='text-lg my-2 font-semibold'>Experience</h2>
                             {/* Map through experience array and display details */}
                             {experience &&
-                                experience.map((exp, index) => (
-                                    <div key={index}>
-                                        <p>{exp.companyName}</p>
-                                        <p>{exp.position}</p>
-                                        <p>{exp.date}</p>
-                                        <p>{exp.description}</p>
+                                experience.map((exp) => (
+                                    <div key={exp._id} className='my-4'>
+                                        <div className="flex flex-col">
+                                            <div className="flex justify-between">
+                                                <p className='text-xl font-bold capitalize'>{exp.companyName} - {exp.position}</p>
+                                                <p className='font-semibold font-sans text-sm text-right'>{formatDate(exp.startDate)} - {(exp.currentlyWorking == true) ? "Presesnt" : exp.endDate} </p>
+                                            </div>
+                                            <div className='text-xl flex justify-between'><p>- {exp.location}</p>  <p className='capitalize text-sm'>{`( ${exp.locationType} )`}</p></div>
+                                            <div className='flex'><p className='mr-2'>More Info:</p> <p className='basis-8/12'>{exp.description}</p></div>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
@@ -114,7 +126,7 @@ const Resume = () => {
                         <hr className="divider" />
 
                         <div className="skills">
-                            <h2>Skills</h2>
+                            <h2 className='text-lg my-2 font-semibold'>Skills</h2>
                             {/* Map through skills array and display details */}
                             {skill &&
                                 skill.map((skill, index) => (
@@ -125,13 +137,21 @@ const Resume = () => {
                         <hr className="divider" />
 
                         <div className="projects">
-                            <h2>Projects</h2>
+                            <h2 className='text-lg my-2 font-semibold'>Projects</h2>
                             {/* Map through projects array and display details */}
                             {project &&
-                                project.map((project, index) => (
-                                    <div key={index}>
-                                        <p>{project.projectName}</p>
-                                        <p>{project.associated}</p>
+                                project.map((project) => (
+                                    <div key={project._id} className='my-4'>
+                                        <div className="flex flex-col">
+                                            <div className="flex justify-between">
+                                                <p className='text-xl font-bold capitalize'>{project.projectName} <span className='font-normal'>- {project.associated}</span></p>
+                                                <p className='font-semibold font-sans text-sm text-right'>{formatDate(project.startDate)} - {(project.currentlyworking == true) ? "present" : formatDate(project.endDate)}</p>
+                                            </div>
+                                            <div className="flex">
+                                                <p className='mr-2'>More Info :</p>
+                                                <p className='basis-8/12'>{project.description}</p>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
                         </div>
