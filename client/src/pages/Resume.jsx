@@ -75,11 +75,11 @@ const Resume = () => {
                         </div>
 
                         <div className="socials basis-1/3 text-right mt-6">
-                            <p className='flex items-center '> <FaLinkedinIn className='mr-1' /> {linkedin}</p>
-                            <p className='flex items-center '> <TbBrandGithubFilled className='mr-1' /> {github}</p>
-                            <p className='flex items-center '> <FaTwitter className='mr-1' /> {twitter}</p>
-                            <p className='flex items-center '> <AiFillInstagram className='mr-1' /> {instagram}</p>
-                            <p className='flex items-center '><PiGlobeLight className='mr-1' />{website}</p>
+                            {linkedin && <p className='flex items-center '> <FaLinkedinIn className='mr-1' /> {linkedin}</p>}
+                            {github && <p className='flex items-center '> <TbBrandGithubFilled className='mr-1' /> {github}</p>}
+                            {twitter && <p className='flex items-center '> <FaTwitter className='mr-1' /> {twitter}</p>}
+                            {instagram && <p className='flex items-center '> <AiFillInstagram className='mr-1' /> {instagram}</p>}
+                            {website && <p className='flex items-center '><PiGlobeLight className='mr-1' />{website}</p>}
                         </div>
                     </div>
 
