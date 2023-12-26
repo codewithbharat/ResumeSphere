@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DasboardLayout from '../../components/DashboardLayout'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -8,16 +8,32 @@ const SocialLinks = () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [socialLinks, setSocialLinks] = useState({
-        email: user.email,
-        github: user.github,
-        linkedin: user.linkedin,
-        twitter: user.twitter,
-        instagram: user.instagram,
+        email: '',
+        github: '',
+        linkedin: '',
+        twitter: '',
+        instagram: '',
     });
 
     const token = localStorage.getItem('token');
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token || user) {
+            setSocialLinks({
+                ...socialLinks,
+                email: user.email,
+                github: user.github,
+                linkedin: user.linkedin,
+                twitter: user.twitter,
+                instagram: user.instagram,
+            })
+        } else {
+            navigate('/login');
+        }
+    }, [])
+
 
     const handleChange = (e) => {
         setSocialLinks({

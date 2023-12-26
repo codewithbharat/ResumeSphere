@@ -39,7 +39,11 @@ const Education = () => {
     }
 
     useEffect(() => {
-        getUserData();
+        if (token) {
+            getUserData();
+        } else {
+            navigate('/login');
+        }
     }, [])
 
 

@@ -8,12 +8,12 @@ const BasicInfo = () => {
     const user = JSON.parse(localStorage.getItem('user'));
 
     const [basicInfo, setBasicInfo] = useState({
-        name: user.name,
-        email: user.email,
-        phone: user.phone,
-        jobTitle: user.jobTitle,
-        address: user.address,
-        website: user.website,
+        name: '',
+        email: '',
+        phone: '',
+        jobTitle: '',
+        address: '',
+        website: '',
 
     });
 
@@ -23,6 +23,16 @@ const BasicInfo = () => {
     useEffect(() => {
         if (!token || !user) {
             navigate('/login');
+        } else {
+            setBasicInfo({
+                ...basicInfo,
+                name: user.name,
+                email: user.email,
+                phone: user.phone,
+                jobTitle: user.jobTitle,
+                address: user.address,
+                website: user.website,
+            })
         }
     }, []);
 

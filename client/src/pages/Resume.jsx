@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import DasboardLayout from '../components/DashboardLayout'
 import './styles/Resume.css'
 import ReactToPrint from 'react-to-print';
+import { useNavigate } from 'react-router-dom';
 
 
 // importing icons
@@ -14,15 +15,18 @@ import { PiGlobeLight } from "react-icons/pi";
 
 
 const Resume = () => {
+    const navigate = useNavigate();
     const [userData, setUserData] = useState({});
     const componentRef = useRef();
-
+    // Retrieve user data from local storage
+    const user = JSON.parse(localStorage.getItem('user'));
     useEffect(() => {
-        // Retrieve user data from local storage
-        const user = JSON.parse(localStorage.getItem('user'));
+
 
         if (user) {
             setUserData(user);
+        } else {
+            navigate('/login');
         }
     }, []);
 

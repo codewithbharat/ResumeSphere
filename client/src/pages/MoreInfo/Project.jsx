@@ -42,8 +42,13 @@ const Project = () => {
 
 
     useEffect(() => {
-        getUserData();
+        if (token) {
+            getUserData();
+        } else {
+            navigate('/login');
+        }
     }, [])
+
 
 
     const handleSubmit = (e) => {

@@ -1,14 +1,16 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
 const CompleteRegistration = () => {
     const [step, setStep] = useState(1);
-    const { name, email, password } = JSON.parse(localStorage.getItem('user'));
+    const token = localStorage.getItem('token');
+
+    const user = JSON.parse(localStorage.getItem('user'));
     const [formData, setFormData] = useState({
-        name,
-        email,
-        password,
+        name: '',
+        email: '',
+        password: '',
         jobTitle: '',
         phone: '',
         address: '',
@@ -17,6 +19,21 @@ const CompleteRegistration = () => {
         github: '',
         website: '',
     });
+
+    useEffect(() => {
+        if (!token || !user) {
+            navigate('/login');
+        } else {
+            setFormData({
+                ...formData,
+                name: user.name,
+                email: user.email,
+                password: user.password,
+            })
+        }
+    }, [])
+
+
 
 
     const handleChange = (e, key) => {
@@ -97,7 +114,7 @@ const CompleteRegistration = () => {
         e.preventDefault();
         axios.put(`${import.meta.env.VITE_SERVER}/update-user`, formData, {
             headers: {
-                Authorization: `Bearer ${localStorage.getItem('token')}`
+                Authorization: `Bearer ${token}`
             }
         })
             .then(res => {

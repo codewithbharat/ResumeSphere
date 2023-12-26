@@ -38,8 +38,13 @@ const Skill = () => {
 
 
     useEffect(() => {
-        getUserData();
+        if (token) {
+            getUserData();
+        } else {
+            navigate('/login');
+        }
     }, [])
+
 
     const handleChange = (e) => {
         setSkill({ ...skill, [e.target.name]: e.target.value });
