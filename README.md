@@ -19,10 +19,11 @@ The project allows users to create and customize their resumes, including person
 
 ### Getting Started
 
-1. Clone the repository.
-2. Install dependencies: `npm install`
-3. Create a `.env` file based on the provided `.env-example`.
-4. Start the server:
+1. Navigate to the `server` directory.
+2. Clone the repository.
+3. Install dependencies: `npm install`
+4. Create a `.env` file based on the provided `.env-example`.
+5. Start the server:
    - Development: `npm run dev`
    - Production: `npm start`
 
