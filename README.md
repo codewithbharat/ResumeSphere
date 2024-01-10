@@ -1,4 +1,4 @@
-# ResumeSphere by CodeWithBharat
+# ResumeSphere by CodeWithBharat (Live Preview May Not work due to free hosting plan)
 
 ResumeSphere is a MERN (MongoDB, Express.js, React, Node.js) stack application for building and managing resumes online.
 
@@ -80,4 +80,3 @@ The project is hosted on Vercel. You can access it at [ResumeSphere](https://res
 ## Contact
 
 For any inquiries or support, please contact the project maintainers.
-
